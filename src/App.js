@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      initialArray: ['A','B','C']
+    }
+  }
+  test2 = (event) => {
+    console.log(event.target.innerHTML);
+  }
+  test = (event) => {
+    // console.log(event.target.innerHTML + 1);
+    event.target.insertAdjacentHTML('afterend', `<ul><li onClick=${this.test2}}>${event.target.innerHTML}</li></ul>`)
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {this.state.initialArray.map((item) => <li key={item} onClick={this.test}>{item}</li>)}
+        {/* <ul>
+          <li onClick={this.test}>A</li>
+          <li onClick={this.test}>B</li>
+          <li onClick={this.test}>C</li>
+        </ul> */}
       </div>
     );
   }
