@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ParallelText from './components/parallelText';
 
 class App extends Component {
   constructor(props){
@@ -12,17 +13,20 @@ class App extends Component {
   }
   test = (event) => {
     // console.log(event.target.innerHTML + 1);
+    console.log(event.target.parentElement.innerHTML);
     event.target.insertAdjacentHTML('afterend', `<ul><li onClick=${this.test2}}>${event.target.innerHTML}</li></ul>`)
   }
   render() {
     return (
       <div className="App">
         {this.state.initialArray.map((item) => <li key={item} onClick={this.test}>{item}</li>)}
+        {/* {this.state.initialArray.map((item) => <Sub/>)} */}
         {/* <ul>
-          <li onClick={this.test}>A</li>
-          <li onClick={this.test}>B</li>
-          <li onClick={this.test}>C</li>
+          <li onClick={this.test} alpha={this.state.initialArray[0]}>{this.props.alpha}</li>
+          <li onClick={this.test} alpha={this.state.initialArray[1]}>{this.props.alpha}</li>
+          <li onClick={this.test} alpha={this.state.initialArray[2]}>{this.props.alpha}</li>
         </ul> */}
+        <ParallelText/>
       </div>
     );
   }
